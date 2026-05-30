@@ -1,21 +1,64 @@
-MIT License
+Educational and Personal Use License
 
 Copyright (c) 2026 Josh Janzen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+of this software and associated documentation files (the "Software"), to use,
+copy, run, study, and modify the Software for personal, educational, and
+non-commercial purposes, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. Permitted Uses
+
+You may:
+- View and study the Software.
+- Run the Software locally for personal learning, educational use, or evaluation.
+- Modify the Software for your own personal, educational, or internal
+  non-commercial use.
+- Use the Software as a learning reference for understanding Spec-Driven
+  Development, AI-assisted coding workflows, and related software development
+  practices.
+
+2. Prohibited Uses
+
+You may not, without prior written permission from the copyright holder:
+- Sell, resell, license, sublicense, rent, lease, or otherwise commercialize
+  the Software or any substantial portion of it.
+- Offer the Software, or a derivative work based substantially on the Software,
+  as a paid product, paid service, SaaS application, hosted service, course
+  artifact, template pack, consulting deliverable, or commercial training
+  material.
+- Remove or obscure the copyright notice or this license.
+- Represent the Software as your own original work.
+
+3. Distribution
+
+You may share unmodified copies of the Software for educational or
+non-commercial purposes, provided that this license and the copyright notice
+are included.
+
+You may not publicly distribute modified versions of the Software without
+prior written permission from the copyright holder, except for private
+educational use or classroom discussion.
+
+4. Attribution
+
+Any permitted copy, excerpt, or educational reference to the Software must
+include attribution to:
+
+Josh Janzen
+
+5. No Warranty
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, SECURITY, OR ACCURACY.
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING
+FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+
+6. Commercial Licensing
+
+For commercial use, redistribution, consulting use, training use, hosted use,
+or incorporation into a commercial product or service, written permission or
+a separate commercial license is required.
