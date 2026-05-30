@@ -1,6 +1,4 @@
-# AGENTS.md
-
-## Project
+# Project
 
 This repository contains a new software project. The project purpose, target users, and implementation details will be refined as the codebase develops.
 
@@ -83,7 +81,7 @@ When working in this repo:
 6. When implementing a feature, follow the approved `plan.md` and validate against `validation.md`.
 7. After completing work, summarize what changed, what was tested, and any remaining risks.
 
-## Branch Naming
+## Branch Strategy
 
 Use clear branch names.
 
@@ -94,7 +92,7 @@ chore/<short-task-name>
 docs/<short-doc-change>
 ```
 
-## Commit Guidance
+## Commits
 
 The user handles commits unless explicitly asked otherwise.
 
@@ -106,6 +104,10 @@ Implement user authentication flow
 Fix data validation error
 Update roadmap after completed feature
 ```
+
+## PRs 
+
+Always done by the user, even for roadmap updates on main.
 
 ## Testing Expectations
 
