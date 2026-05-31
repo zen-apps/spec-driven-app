@@ -8,6 +8,11 @@ Ordered newest phase first.
 
 ---
 
+## Phase 4 — Frontend: chat UI against the real backend
+**Completed:** 2026-05-31 · **Spec:** [specs/2026-05-31-frontend-chat/](2026-05-31-frontend-chat/)
+
+Designed and built an interactive Streamlit chat interface integrated with the FastAPI backend, featuring structured diagnostic expandable fields and metrics to show agent activity; implementation complete, manual QA pending.
+
 ## Phase 3 — Backend tests (pytest)
 **Completed:** 2026-05-31 · **Spec:** [specs/2026-05-31-backend-tests/](2026-05-31-backend-tests/)
 

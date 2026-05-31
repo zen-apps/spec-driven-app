@@ -11,17 +11,6 @@ Completed phases have moved to [changelog.md](changelog.md) — this file tracks
 
 ---
 
-## Phase 4 — Frontend: chat UI against the real backend [x] COMPLETE (implementation; manual QA pending)
-
-Build the real Streamlit experience on top of the working backend.
-
-- Streamlit chat interface that posts to `/chat` and renders the agent reply.
-- Display the structured fields and run metrics (tools used, key findings,
-  reasoning summary, confidence, token usage) so the agent's work is visible.
-- Conversation state held in the Streamlit session.
-- Outcome: a user can chat with the agent through the UI end to end via
-  `docker-compose up`.
-
 ## Phase 5 — Polish & docs
 
 Make the project reproducible by a student from a clean clone.
