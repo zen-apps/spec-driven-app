@@ -220,3 +220,4 @@ __marimo__/
 .agents/*
 credentials/*
 *.env
+.antigravitycli/*
