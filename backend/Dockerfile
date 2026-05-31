@@ -8,8 +8,10 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application package.
+# Copy the application package and tests.
 COPY app ./app
+COPY tests ./tests
+
 
 # Container listens on 8000 (published to host 8001 by docker-compose).
 EXPOSE 8000

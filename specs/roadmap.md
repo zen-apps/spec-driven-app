@@ -11,7 +11,7 @@ Completed phases have moved to [changelog.md](changelog.md) — this file tracks
 
 ---
 
-## Phase 3 — Backend tests (pytest)
+## Phase 3 — Backend tests (pytest) [x] COMPLETE (implementation; manual QA pending)
 
 Lock in backend behavior with the LLM mocked.
 
