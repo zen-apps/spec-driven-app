@@ -72,9 +72,16 @@ the moving parts to two services and avoids a data-modeling detour.
 ## Package management
 
 - Python dependencies per service via `requirements.txt` (pinned), matching the
-  style of `examples/requirements.txt`. As of Phase 1 the pinned shell deps are
-  `fastapi==0.136.3` + `uvicorn[standard]==0.48.0` (backend) and
-  `streamlit==1.58.0` (frontend); LangChain / Gemini are added in Phase 2.
+  style of `examples/requirements.txt`. As of Phase 2, the pinned dependencies are:
+  - **Backend (`./backend/requirements.txt`):**
+    - `fastapi==0.136.3`
+    - `uvicorn[standard]==0.48.0`
+    - `langchain==1.3.0`
+    - `langchain-community==0.4.1`
+    - `langchain-google-genai==4.2.4`
+    - `pydantic>=2.0`
+  - **Frontend (`./frontend/requirements.txt`):**
+    - `streamlit==1.58.0`
 
 ## Repository layout
 
