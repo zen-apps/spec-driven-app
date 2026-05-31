@@ -7,31 +7,9 @@ test it, then build the frontend on top, and finish with docs.
 
 Mark a phase `[x] COMPLETE` (with a date) when it ships.
 
-Completed phases have moved to [changelog.md](changelog.md) — this file tracks only
-open and upcoming work.
+Completed phases have moved to [changelog.md](changelog.md) — this file tracks only open and upcoming work.
 
 ---
-
-## Phase 2 — Backend: full LangChain agent endpoint [x] COMPLETE (2026-05-31)
-
-Bring up the complete agent in one pass, matching
-[`examples/create_agent.ipynb`](../examples/create_agent.ipynb) — **structured
-output AND all demo tools at once.**
-
-- Wire `ChatGoogleGenerativeAI` (`gemini-3.5-flash`) using credentials mounted
-  from `./credentials`, configured (`project`/`location`) as in the example.
-- Build the agent with `create_agent`, including:
-  - the `AutonomousAgentResponse` Pydantic `response_format` (final_answer,
-    task_completed, reasoning_summary, tools_used, key_findings, limitations,
-    recommended_next_steps, confidence);
-  - all `@tool` functions from the example (`run_sql`, `validate_answer`,
-    `search_docs`, `save_artifact`, `weather`, `web_search`);
-  - the system prompt and `recursion_limit` from the notebook.
-- Expose a `POST /chat` endpoint returning the structured response plus run
-  metrics (tool-call counts/sequence, agent iterations, token usage) via the
-  notebook's metrics helpers.
-- Outcome: a request to `/chat` runs the agent end to end — tool calls,
-  structured JSON, and metrics all returned.
 
 ## Phase 3 — Backend tests (pytest)
 
