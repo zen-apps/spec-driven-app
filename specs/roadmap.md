@@ -9,7 +9,7 @@ Mark a phase `[x] COMPLETE` (with a date) when it ships.
 
 ---
 
-## Phase 1 — Repo skeleton & docker-compose
+## Phase 1 — Repo skeleton & docker-compose [x] COMPLETE (implementation; manual QA pending) — 2026-05-31
 
 Stand up the two-service shell. **Repo skeleton only — no agent logic yet.**
 

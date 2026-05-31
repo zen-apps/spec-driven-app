@@ -1,0 +1,21 @@
+# docker-compose for the two-service shell (Phase 1).
+# Both services join the default compose network, so the frontend can reach the
+# backend by its service name (http://backend:8000) in later phases.
+
+services:
+  backend:
+    build: ./backend
+    # Container listens on 8000; published on host 8001 because host 8000 is in
+    # use on the dev machine. The container port / service URL stay 8000.
+    ports:
+      - "8001:8000"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    environment:
+      # Where the frontend will call the backend (used starting in Phase 4).
+      BACKEND_URL: "http://backend:8000"
+    depends_on:
+      - backend
