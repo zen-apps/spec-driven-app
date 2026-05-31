@@ -8,6 +8,11 @@ Ordered newest phase first.
 
 ---
 
+## Phase 3 — Backend tests (pytest)
+**Completed:** 2026-05-31 · **Spec:** [specs/2026-05-31-backend-tests/](2026-05-31-backend-tests/)
+
+Implemented a robust, hermetic pytest suite with LLM responses mocked to validate backend health, request/response formats, structured outputs, and tool-call handling; implementation complete, manual QA pending.
+
 ## Phase 2 — Backend: full LangChain agent endpoint
 **Completed:** 2026-05-31 · **Spec:** [specs/2026-05-31-backend-agent/](2026-05-31-backend-agent/)
 

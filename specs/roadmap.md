@@ -11,15 +11,6 @@ Completed phases have moved to [changelog.md](changelog.md) — this file tracks
 
 ---
 
-## Phase 3 — Backend tests (pytest) [x] COMPLETE (implementation; manual QA pending)
-
-Lock in backend behavior with the LLM mocked.
-
-- pytest covering `/health`, the `/chat` request/response shape,
-  structured-output validation, and tool-call handling — **Gemini mocked**, no
-  live LLM calls.
-- Outcome: `pytest` passes locally and in the backend container.
-
 ## Phase 4 — Frontend: chat UI against the real backend
 
 Build the real Streamlit experience on top of the working backend.
