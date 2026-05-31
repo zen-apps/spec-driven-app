@@ -94,7 +94,7 @@ docs/<short-doc-change>
 
 ## Commits
 
-The user handles commits unless explicitly asked otherwise.
+The user handles ALL commits unless explicitly asked otherwise.
 
 When asked to commit, use concise commit messages:
 

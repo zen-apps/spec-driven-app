@@ -1,1 +1,6 @@
-- [ ] look at the ./examples/ dir for create_agent.ipynb showing how i use langchain agents with structured output and tools. Implement similar in a backend fastapi python app, frontend in streamlit.  use Docker containers for each.  Docker-compose to create.  Each service will have their own port.  Put each serivce in own dir ./frontend and ./backend.  The gemini LLM credentials are in the ./credentials directory. 
+# TODO
+
+Raw, unvetted inbox. Dump ideas here; `/sdd-roadmap-from-todo` triages them into
+`specs/roadmap.md`.
+
+_(empty — last triage promoted the initial build into roadmap Phases 1–5)_
