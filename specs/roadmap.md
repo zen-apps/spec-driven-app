@@ -12,7 +12,7 @@ open and upcoming work.
 
 ---
 
-## Phase 2 — Backend: full LangChain agent endpoint
+## Phase 2 — Backend: full LangChain agent endpoint [x] COMPLETE (2026-05-31)
 
 Bring up the complete agent in one pass, matching
 [`examples/create_agent.ipynb`](../examples/create_agent.ipynb) — **structured

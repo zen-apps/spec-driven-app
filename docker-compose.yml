@@ -9,6 +9,12 @@ services:
     # use on the dev machine. The container port / service URL stay 8000.
     ports:
       - "8001:8000"
+    volumes:
+      - ./credentials:/app/credentials:ro
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/service-account-key.json
+      - GEMINI_PROJECT=${GEMINI_PROJECT:-zen-general-377713}
+      - GEMINI_LOCATION=${GEMINI_LOCATION:-global}
 
   frontend:
     build: ./frontend
