@@ -11,7 +11,7 @@ Completed phases have moved to [changelog.md](changelog.md) — this file tracks
 
 ---
 
-## Phase 4 — Frontend: chat UI against the real backend
+## Phase 4 — Frontend: chat UI against the real backend [x] COMPLETE (implementation; manual QA pending)
 
 Build the real Streamlit experience on top of the working backend.
 
