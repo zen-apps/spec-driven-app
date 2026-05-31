@@ -12,20 +12,25 @@ so every dependency should be explainable.
   JSON API the frontend calls. The container listens on port `8000`.
 - **Agent framework:** LangChain `1.3.0` — the agent is built with
   `create_agent` from `langchain.agents`, mirroring
-  [`examples/create_agent.ipynb`](../examples/create_agent.ipynb) 1:1.
+  [`examples/create_agent_tools.ipynb`](../examples/create_agent_tools.ipynb) 1:1.
 - **LLM:** Google **Gemini** (`gemini-3.5-flash`) via
-  `langchain-google-genai` (`ChatGoogleGenerativeAI`).
+  `langchain-google-genai` (`ChatGoogleGenerativeAI`), configured with a
+  **temperature of `1.0`** and an agent **recursion limit of `50`**.
   Credentials live in `./credentials` (gitignored) and are mounted into the
   backend container; `project` / `location` are configured as in the example.
 - **Structured output:** the agent returns a validated **Pydantic** model
   (`response_format=...`) — `final_answer`, `task_completed`,
   `reasoning_summary`, `tools_used`, `key_findings`, `limitations`,
   `recommended_next_steps`, `confidence`.
-- **Tools:** Python functions decorated with `@tool` (the example ships
-  `run_sql`, `validate_answer`, `search_docs`, `save_artifact`, `weather`,
-  `web_search` as demo placeholders). The backend exposes the same tool-calling
-  pattern, including the run-metrics helpers (tool-call counts, token usage,
-  agent iterations) from the notebook.
+- **Tools:** Python functions decorated with `@tool` matching the classroom-demo
+  implementations from `create_agent_tools.ipynb`:
+  - `run_sql(query: str) -> str`: Simulates read-only query facts over the sales dataset.
+  - `validate_answer(answer: str, evidence: str) -> str`: Assesses answer support with overlap checking.
+  - `search_docs(query: str) -> str`: Queries Spec-Driven Development summary documentation.
+  - `save_artifact(name: str, content: str) -> str`: Simulates saving files (signature updated to take both `name` and `content`).
+  - `weather(location: str) -> str`: Retrieves deterministic weather for demo cities.
+  - `web_search(query: str) -> str`: Queries a curated fake web index.
+  The backend exposes this tool-calling pattern, including the run-metrics helpers (tool-call counts, token usage, agent iterations) from the notebook.
 
 ## Frontend (`./frontend`)
 
@@ -93,7 +98,8 @@ the moving parts to two services and avoids a data-modeling detour.
 ├── backend/          # FastAPI + LangChain agent (Python), own Dockerfile
 ├── frontend/         # Streamlit UI, own Dockerfile
 ├── credentials/      # Gemini credentials (gitignored), mounted into backend
-├── examples/         # reference notebooks (create_agent.ipynb, sdd_rag.ipynb)
+├── examples/         # reference notebooks (create_agent_tools.ipynb, sdd_rag.ipynb)
+│   └── demo_data/    # dataset files used by simulated tools (sales.csv, etc.)
 ├── specs/            # spec-driven development docs
 └── docker-compose.yml
 ```
