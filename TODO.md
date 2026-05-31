@@ -3,4 +3,4 @@
 Raw, unvetted inbox. Dump ideas here; `/sdd-roadmap-from-todo` triages them into
 `specs/roadmap.md`.
 
-_(empty — last triage promoted the initial build into roadmap Phases 1–5)_
+_(empty — last triage promoted the tools-centric agent backend item into Phase 5)_
