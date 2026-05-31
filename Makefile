@@ -1,4 +1,4 @@
-.PHONY: copy-skills build up down logs
+.PHONY: copy-skills build up down logs test-local test-container
 
 copy-skills:
 	rm -rf .claude/skills
@@ -23,3 +23,10 @@ down:
 
 logs:
 	docker-compose logs -f
+
+test-local:
+	pytest backend/tests
+
+test-container:
+	docker-compose run --rm backend pytest tests
+
