@@ -11,7 +11,7 @@ Completed phases have moved to [changelog.md](changelog.md) — this file tracks
 
 ---
 
-## Phase 5 — Tools-centric agent backend
+## Phase 5 — Tools-centric agent backend [x] COMPLETE (implementation; manual QA pending)
 
 Implement the new tools-centric agent backend based on `create_agent_tools.ipynb`, keeping existing tests and frontend integration intact (with necessary minimal adjustments).
 

@@ -8,7 +8,7 @@ from app.tools import run_sql, validate_answer, search_docs, save_artifact, weat
 GEMINI_PROJECT = os.environ.get("GEMINI_PROJECT", "zen-general-377713")
 GEMINI_LOCATION = os.environ.get("GEMINI_LOCATION", "global")
 
-# Initialize ChatGoogleGenerativeAI
+# Initialize ChatGoogleGenerativeAI with temperature 1.0
 llm = ChatGoogleGenerativeAI(
     model="gemini-3.5-flash",
     temperature=1.0,
@@ -29,9 +29,9 @@ agent = create_agent(
     ],
     response_format=AutonomousAgentResponse,
     system_prompt="""
-    You are an autonomous agent.
+    You are an autonomous agent running a classroom demo.
 
-    You may use tools repeatedly when needed.
+    You may use tools repeatedly when needed. The available tools are deterministic teaching examples, not production integrations.
 
     Before finalizing:
     - Make sure the answer is grounded in tool results when tools were used.
