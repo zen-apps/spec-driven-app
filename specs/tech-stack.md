@@ -72,7 +72,7 @@ the moving parts to two services and avoids a data-modeling detour.
 ## Package management
 
 - Python dependencies per service via `requirements.txt` (pinned), matching the
-  style of `examples/requirements.txt`. As of Phase 2, the pinned dependencies are:
+  style of `examples/requirements.txt`. As of Phase 3, the pinned dependencies are:
   - **Backend (`./backend/requirements.txt`):**
     - `fastapi==0.136.3`
     - `uvicorn[standard]==0.48.0`
@@ -80,6 +80,8 @@ the moving parts to two services and avoids a data-modeling detour.
     - `langchain-community==0.4.1`
     - `langchain-google-genai==4.2.4`
     - `pydantic>=2.0`
+    - `pytest==8.1.1`
+    - `httpx==0.28.1`
   - **Frontend (`./frontend/requirements.txt`):**
     - `streamlit==1.58.0`
 
