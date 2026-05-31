@@ -8,7 +8,8 @@ so every dependency should be explainable.
 ## Backend (`./backend`)
 
 - **Language:** Python
-- **Web framework:** FastAPI (serves a JSON API the frontend calls)
+- **Web framework:** FastAPI, run by **uvicorn** (`uvicorn[standard]`); serves a
+  JSON API the frontend calls. The container listens on port `8000`.
 - **Agent framework:** LangChain `1.3.0` — the agent is built with
   `create_agent` from `langchain.agents`, mirroring
   [`examples/create_agent.ipynb`](../examples/create_agent.ipynb) 1:1.
@@ -57,6 +58,13 @@ the moving parts to two services and avoids a data-modeling detour.
 - **Run target:** **local `docker-compose up`** on a developer's machine. Each
   service builds from its own `Dockerfile`; docker-compose brings both up on
   separate ports.
+- **Base image:** both services build from `python:3.12-slim`.
+- **Ports:** the backend container listens on `8000` and is **published to the
+  host on `8001`** — `8001` is the project's canonical backend host port (chosen
+  during Phase 1 because host `8000` is commonly occupied). The frontend runs on
+  `8501` (Streamlit default). The frontend reaches the backend over the compose
+  network at `http://backend:8000`, supplied via the `BACKEND_URL` environment
+  variable, so the host publish port is irrelevant to inter-service calls.
 - **No cloud deploy and no CI/CD pipeline** for now — the teaching scope is kept
   tight. (A GitHub Actions test/lint step is a candidate for a later phase if
   the class wants it.)
@@ -64,7 +72,9 @@ the moving parts to two services and avoids a data-modeling detour.
 ## Package management
 
 - Python dependencies per service via `requirements.txt` (pinned), matching the
-  style of `examples/requirements.txt`.
+  style of `examples/requirements.txt`. As of Phase 1 the pinned shell deps are
+  `fastapi==0.136.3` + `uvicorn[standard]==0.48.0` (backend) and
+  `streamlit==1.58.0` (frontend); LangChain / Gemini are added in Phase 2.
 
 ## Repository layout
 
