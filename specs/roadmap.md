@@ -7,19 +7,10 @@ test it, then build the frontend on top, and finish with docs.
 
 Mark a phase `[x] COMPLETE` (with a date) when it ships.
 
+Completed phases have moved to [changelog.md](changelog.md) — this file tracks only
+open and upcoming work.
+
 ---
-
-## Phase 1 — Repo skeleton & docker-compose
-
-Stand up the two-service shell. **Repo skeleton only — no agent logic yet.**
-
-- `./backend`: FastAPI app with a `/health` endpoint, `Dockerfile`,
-  pinned `requirements.txt`.
-- `./frontend`: Streamlit app with a minimal page, `Dockerfile`,
-  pinned `requirements.txt`.
-- `docker-compose.yml`: builds both services, each on its own port, on a shared
-  compose network so the frontend can reach the backend.
-- Outcome: `docker-compose up` brings both services up; each `/health` responds.
 
 ## Phase 2 — Backend: full LangChain agent endpoint
 
