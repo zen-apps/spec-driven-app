@@ -8,14 +8,14 @@ Before making major changes, review the project files and ask clarifying questio
 
 Update this section as the project is defined.
 
-* Language:
-* Frontend:
-* Backend:
-* Database:
-* LLM / AI tools:
-* Deployment:
-* Package manager:
-* Testing framework:
+* Language: Python
+* Frontend: Streamlit
+* Backend: FastAPI + LangChain
+* Database: None (stateless)
+* LLM / AI tools: Google Gemini (gemini-3.5-flash via langchain-google-genai)
+* Deployment: Docker Compose (local development)
+* Package manager: pip (requirements.txt)
+* Testing framework: pytest
 
 ## Repository Structure
 
@@ -35,13 +35,13 @@ Update these commands once the project has runnable code.
 
 ```bash
 # Install dependencies
-# TODO
+pip install -r backend/requirements.txt -r frontend/requirements.txt
 
 # Run the app locally
-# TODO
+make build && make up # or docker-compose up
 
 # Run tests
-# TODO
+make test-local # or pytest backend/tests
 
 # Run linting / formatting
 # TODO
