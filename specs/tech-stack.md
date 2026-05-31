@@ -84,6 +84,7 @@ the moving parts to two services and avoids a data-modeling detour.
     - `httpx==0.28.1`
   - **Frontend (`./frontend/requirements.txt`):**
     - `streamlit==1.58.0`
+    - `requests==2.31.0`
 
 ## Repository layout
 
