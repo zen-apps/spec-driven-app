@@ -8,6 +8,11 @@ Ordered newest phase first.
 
 ---
 
+## Phase 3 — Compose integration + structured-output view
+**Completed:** 2026-06-02 · **Spec:** [specs/2026-06-02-compose-structured-output/](2026-06-02-compose-structured-output/)
+
+Wired both services into one `docker-compose up` (frontend reaching the backend by service name via an env-driven `BACKEND_URL`) and added the frontend's `🧩 Structured output` view rendering the agent's `AutonomousAgentResponse` — completing the inside-out core build; **implementation complete, manual QA still pending** (frontend image build + end-to-end walkthrough unexercised).
+
 ## Phase 2 — Streamlit frontend
 **Completed:** 2026-06-02 · **Spec:** [specs/2026-06-02-streamlit-frontend/](2026-06-02-streamlit-frontend/)
 

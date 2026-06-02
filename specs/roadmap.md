@@ -13,50 +13,25 @@ and written by the other SDD skills (`sdd-feature-spec`, `sdd-implement-feature`
 Completed phases have moved to [changelog.md](changelog.md) — this file tracks
 only open and upcoming work.
 
-## Phase 3 — Compose integration + structured-output view [x] COMPLETE (implementation; manual QA pending)
+## Open follow-ups
 
-Wire both services together for a one-command classroom setup, and complete the
-frontend's reasoning views.
+- **Phase 3 manual QA** (owed) — the now-archived Phase 3 shipped its
+  implementation but its end-to-end walkthrough and frontend image build have
+  **not been exercised**; the gates in
+  [`validation.md`](2026-06-02-compose-structured-output/validation.md) remain
+  unchecked. Until they pass, `mission.md` success criterion #1 ("runs
+  end-to-end") is met only in code, not demonstrated. See
+  [changelog.md](changelog.md) → Phase 3.
 
-- **Already in place from Phase 1:** `docker-compose.yml` with the **backend**
-  service (host `8001` → container `8000`, `./credentials` mounted read-only) and
-  a root `Makefile` (`make build` / `run` / `down`). Phase 3 builds on these
-  rather than starting from scratch.
-- Add the **frontend** service to `docker-compose.yml`, on its own port.
-- Configure the frontend to reach the backend by its compose service name
-  (`http://backend:8000`).
-- **Folded in from Phase 2 (replan 2026-06-02):** add the **structured-output
-  view** to the frontend — render the agent's `AutonomousAgentResponse` (the
-  `structured_response` the `/chat` API already returns) so the end-to-end demo
-  shows it, satisfying `mission.md` success criterion #1. Phase 2 intentionally
-  shipped final answer + tool calls only; this completes the promised reasoning
-  views. (The tool-calls view stays names/sequence/counts — exposing per-call
-  args/outputs is explicitly **not** scheduled; see `tech-stack.md` Frontend.)
-- **Carried over from Phase 2:** the `frontend/Dockerfile` exists but its image
-  build was not validated in Phase 2 (the Makefile builds only compose services,
-  and the frontend wasn't in compose yet). Validate the frontend image builds
-  here, via `make build` once the service is added.
-- Validation: manual — `docker-compose up` (or `make run`) brings up both
-  services; a user chats with the agent end-to-end and sees tool calls +
-  structured output. This satisfies the "runs end-to-end" success criterion in
-  `mission.md`.
-
-## Status — core build complete (manual QA pending)
+## Status — core build complete
 
 The inside-out core build (Phase 1 backend → Phase 2 frontend → Phase 3 compose
-integration + structured-output view) is **implementation-complete**. The agent
+integration + structured-output view) is **implementation-complete**: the agent
 runs as an API, the Streamlit UI renders final answer + tool calls + structured
 output, and `docker-compose.yml` wires both services for a one-command setup.
-
-**One item is still owed before this is truly done:** the Phase 3 **manual QA**
-walkthrough — `make build` / `docker compose up`, a browser chat end-to-end, and
-the frontend image build — has not been exercised yet (its
-[`validation.md`](2026-06-02-compose-structured-output/validation.md) gates are
-unchecked). Until that passes, `mission.md` success criterion #1 ("runs
-end-to-end") is met only in code, not demonstrated.
-
-No further core-build phases are planned. The next candidates, if prioritized,
-come from the deferred list below.
+No further core-build phases are planned; the next candidates, if prioritized,
+come from the deferred list below. (The one item still owed is the Phase 3
+manual QA — see "Open follow-ups" above.)
 
 ## Out of scope (post-roadmap)
 
