@@ -13,7 +13,7 @@ and written by the other SDD skills (`sdd-feature-spec`, `sdd-implement-feature`
 Completed phases have moved to [changelog.md](changelog.md) — this file tracks
 only open and upcoming work.
 
-## Phase 2 — Streamlit frontend [ ]
+## Phase 2 — Streamlit frontend [x] COMPLETE (implementation; manual QA pending)
 
 Build the chat UI that talks to the backend.
 
@@ -37,6 +37,10 @@ Wire both services together for a one-command classroom setup.
 - Add the **frontend** service to `docker-compose.yml`, on its own port.
 - Configure the frontend to reach the backend by its compose service name
   (`http://backend:8000`).
+- **Carried over from Phase 2:** the `frontend/Dockerfile` exists but its image
+  build was not validated in Phase 2 (the Makefile builds only compose services,
+  and the frontend wasn't in compose yet). Validate the frontend image builds
+  here, via `make build` once the service is added.
 - Validation: manual — `docker-compose up` (or `make run`) brings up both
   services; a user chats with the agent end-to-end and sees tool calls +
   structured output. This satisfies the "runs end-to-end" success criterion in

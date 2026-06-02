@@ -1,0 +1,8 @@
+# Frontend dependencies — Phase 2 (Streamlit chat UI).
+#
+# Intentionally tiny and teachable: the Streamlit app framework plus a plain
+# HTTP client to call the backend's POST /chat endpoint. No agent libraries
+# live here — the frontend only talks to the backend over HTTP.
+
+streamlit==1.54.0
+requests==2.32.3
