@@ -1,7 +1,9 @@
 # Docker Compose for the reference agent app.
 #
-# Phase 1 defines the backend service only. Phase 3 will add the Streamlit
-# frontend service and wire it to reach the backend by its compose service name.
+# Two services on their own ports: the FastAPI backend and the Streamlit
+# frontend. The frontend reaches the backend by its compose service name
+# (http://backend:8000) over the internal network — no host port is involved in
+# service-to-service traffic.
 #
 # The Gemini service-account JSON is never baked into the image — it is mounted
 # read-only from the gitignored ./credentials directory and located via
@@ -22,3 +24,15 @@ services:
       GEMINI_MODEL: gemini-3.5-flash
       GCP_PROJECT: zen-general-377713
       GCP_LOCATION: global
+
+  frontend:
+    build: ./frontend
+    ports:
+      # Host 8501 -> container 8501 (Streamlit's default port).
+      - "8501:8501"
+    environment:
+      # Reach the backend by its compose service name over the internal network.
+      # Overrides the standalone default (http://localhost:8001) baked into app.py.
+      BACKEND_URL: http://backend:8000
+    depends_on:
+      - backend

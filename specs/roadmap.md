@@ -13,7 +13,7 @@ and written by the other SDD skills (`sdd-feature-spec`, `sdd-implement-feature`
 Completed phases have moved to [changelog.md](changelog.md) — this file tracks
 only open and upcoming work.
 
-## Phase 3 — Compose integration + structured-output view [ ]
+## Phase 3 — Compose integration + structured-output view [x] COMPLETE (implementation; manual QA pending)
 
 Wire both services together for a one-command classroom setup, and complete the
 frontend's reasoning views.
