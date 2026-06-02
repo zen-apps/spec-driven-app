@@ -23,3 +23,6 @@ run:
 # Stop and remove the running containers.
 down:
 	docker compose down
+
+logs:
+	docker compose logs -f
