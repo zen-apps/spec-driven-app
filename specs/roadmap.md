@@ -41,6 +41,23 @@ frontend's reasoning views.
   structured output. This satisfies the "runs end-to-end" success criterion in
   `mission.md`.
 
+## Status — core build complete (manual QA pending)
+
+The inside-out core build (Phase 1 backend → Phase 2 frontend → Phase 3 compose
+integration + structured-output view) is **implementation-complete**. The agent
+runs as an API, the Streamlit UI renders final answer + tool calls + structured
+output, and `docker-compose.yml` wires both services for a one-command setup.
+
+**One item is still owed before this is truly done:** the Phase 3 **manual QA**
+walkthrough — `make build` / `docker compose up`, a browser chat end-to-end, and
+the frontend image build — has not been exercised yet (its
+[`validation.md`](2026-06-02-compose-structured-output/validation.md) gates are
+unchecked). Until that passes, `mission.md` success criterion #1 ("runs
+end-to-end") is met only in code, not demonstrated.
+
+No further core-build phases are planned. The next candidates, if prioritized,
+come from the deferred list below.
+
 ## Out of scope (post-roadmap)
 
 Deferred unless explicitly prioritized later: persistence/database, automated

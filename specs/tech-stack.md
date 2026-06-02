@@ -19,19 +19,25 @@ frontend (Streamlit)  ──HTTP──▶  backend (FastAPI)  ──▶  LangCha
   over HTTP. Dependencies pinned in `frontend/requirements.txt`:
   `streamlit==1.54.0`, `requests==2.32.3`. No agent libraries live here — the
   frontend only calls the backend's `POST /chat`.
-- **As built (Phase 2):** renders the agent's **final answer** as a chat bubble
-  plus a collapsible **tool-calls view** — the ordered tool-call sequence and
-  per-tool counts, drawn from the `metrics` the API exposes. Conversation is held
-  in Streamlit's per-session state (see Data model).
-- **Not yet surfaced (teaching goals, deferred past Phase 2):**
-  - **Structured output** (`AutonomousAgentResponse` fields) — descoped from the
-    Phase 2 UI; see the mission success criteria and roadmap for where this lands.
+- **As built (through Phase 3):** renders the agent's **final answer** as a chat
+  bubble, a collapsible **tool-calls view** (the ordered tool-call sequence and
+  per-tool counts, drawn from the `metrics` the API exposes), and a collapsible
+  **structured-output view** — the `🧩 Structured output` expander rendering the
+  agent's `AutonomousAgentResponse` fields (`task_completed`, `confidence`,
+  `reasoning_summary`, and the `tools_used` / `key_findings` / `limitations` /
+  `recommended_next_steps` lists; `final_answer` is intentionally skipped to
+  avoid duplicating the chat bubble). Conversation is held in Streamlit's
+  per-session state (see Data model).
+- **Still not surfaced (deferred teaching goals):**
   - **Run metrics** (token counts, iterations) as a standalone view.
   - **Per-call tool arguments and outputs** — the backend `/chat` response does
     not expose them today (`build_api_metrics` returns only counts, the tool-name
     sequence, and totals); surfacing them needs a backend change first.
-- **Backend URL** is hardcoded to `http://localhost:8001` in Phase 2; Phase 3
-  swaps that one constant for the compose service name (`http://backend:8000`).
+- **Backend URL** is env-driven:
+  `BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:8001")`. It
+  defaults to the Phase 1 host mapping for a standalone `streamlit run`, and is
+  overridden to the compose service name (`http://backend:8000`) by the frontend
+  service in `docker-compose.yml`.
 
 ## Backend
 
@@ -90,13 +96,17 @@ distracts from the lesson.
 
 - **Local `docker-compose` only.** Target environment is a developer's machine in
   the classroom.
-- `docker-compose.yml` builds and runs `./backend` and `./frontend`, each on its
-  own port, with `./credentials` mounted into the backend. The **backend service
-  is already defined** (Phase 1). The **frontend `Dockerfile` now exists**
-  (Phase 2; Streamlit on container port `8501`), but the **frontend service is
-  not yet in compose** — Phase 3 wires it in and connects it by compose service
-  name. The frontend image build was not validated in Phase 2 (the Makefile
-  builds only compose services); that check is carried into Phase 3.
+- `docker-compose.yml` defines **both services** (Phase 3): `backend`
+  (host `8001` → container `8000`, `./credentials` mounted read-only) and
+  `frontend` (host `8501` → container `8501`, `BACKEND_URL=http://backend:8000`,
+  `depends_on: backend`). The frontend reaches the backend by compose service
+  name over the internal network — no host port is used for service-to-service
+  traffic. **Manual QA still owed:** Phase 3 is implementation-complete, but the
+  frontend image build and the end-to-end walkthrough (`make build` /
+  `docker compose up`, browser chat) have **not yet been exercised**; the
+  sanity/QA gates in
+  [`specs/2026-06-02-compose-structured-output/validation.md`](./2026-06-02-compose-structured-output/validation.md)
+  remain unchecked.
 - The backend is published on **host port `8001`** (→ container `8000`) because
   host `8000` is taken by another local service. Adjust the mapping in
   `docker-compose.yml` if your machine differs.
