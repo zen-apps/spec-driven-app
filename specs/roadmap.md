@@ -10,21 +10,8 @@ Mark a phase `[x] COMPLETE` when its validation passes. This done-marker is read
 and written by the other SDD skills (`sdd-feature-spec`, `sdd-implement-feature`,
 `sdd-changelog`).
 
-## Phase 1 — Backend agent core [x] COMPLETE
-
-Stand up the FastAPI backend that wraps the LangChain agent, testable over HTTP
-before any UI exists.
-
-- FastAPI app in `./backend` with a chat endpoint that accepts a user message.
-- LangChain `create_agent` wired to **Google Gemini** via service-account JSON
-  from `./credentials`, following `examples/create_agent.ipynb`.
-- Deterministic teaching **tools** (e.g. `run_sql`, `search_docs`, `web_search`,
-  `weather`, `validate_answer`, `save_artifact`).
-- **Structured output** via a Pydantic response model, plus run metrics
-  (tool-call counts, iterations, token usage) returned in the API response.
-- Backend Dockerfile.
-- Validation: manual — run the backend, POST a prompt, confirm tools are called
-  and the structured response + metrics come back.
+Completed phases have moved to [changelog.md](changelog.md) — this file tracks
+only open and upcoming work.
 
 ## Phase 2 — Streamlit frontend [ ]
 
