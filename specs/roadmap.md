@@ -43,12 +43,17 @@ Build the chat UI that talks to the backend.
 
 Wire both services together for a one-command classroom setup.
 
-- `docker-compose.yml` building and running `./backend` and `./frontend`, each
-  on its own port, with `./credentials` mounted into the backend.
-- Frontend configured to reach the backend by its compose service name.
-- Validation: manual — `docker-compose up` brings up both services; a user chats
-  with the agent end-to-end and sees tool calls + structured output. This
-  satisfies the "runs end-to-end" success criterion in `mission.md`.
+- **Already in place from Phase 1:** `docker-compose.yml` with the **backend**
+  service (host `8001` → container `8000`, `./credentials` mounted read-only) and
+  a root `Makefile` (`make build` / `run` / `down`). Phase 3 builds on these
+  rather than starting from scratch.
+- Add the **frontend** service to `docker-compose.yml`, on its own port.
+- Configure the frontend to reach the backend by its compose service name
+  (`http://backend:8000`).
+- Validation: manual — `docker-compose up` (or `make run`) brings up both
+  services; a user chats with the agent end-to-end and sees tool calls +
+  structured output. This satisfies the "runs end-to-end" success criterion in
+  `mission.md`.
 
 ## Out of scope (post-roadmap)
 

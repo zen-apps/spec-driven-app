@@ -41,8 +41,15 @@ frontend (Streamlit)  ──HTTP──▶  backend (FastAPI)  ──▶  LangCha
 - **Auth: GCP service-account JSON.** The key file is mounted from the
   gitignored `./credentials` directory; the backend reads project/location from
   config. Credentials are never committed and never logged.
-- Key libraries (see `examples/requirements.txt`): `langchain`,
-  `langchain-google-genai`, plus `pydantic` for structured output.
+- Key libraries (pinned in `backend/requirements.txt` to match
+  `examples/requirements.txt`): `langchain==1.3.0`,
+  `langchain-google-genai==4.2.4`, plus `pydantic` for structured output, and the
+  serving layer `fastapi` + `uvicorn[standard]`.
+- **Configuration** is via environment variables, with notebook-matching defaults
+  in `backend/app/config.py`: `GEMINI_MODEL` (`gemini-3.5-flash`), `GCP_PROJECT`
+  (`zen-general-377713`), `GCP_LOCATION` (`global`), `GEMINI_TEMPERATURE` (`1.0`),
+  and `GOOGLE_APPLICATION_CREDENTIALS` (path to the mounted key). Nothing is
+  hardcoded into the agent module.
 
 ## Data model
 
@@ -72,7 +79,15 @@ distracts from the lesson.
 - **Local `docker-compose` only.** Target environment is a developer's machine in
   the classroom.
 - `docker-compose.yml` builds and runs `./backend` and `./frontend`, each on its
-  own port, with `./credentials` mounted into the backend.
+  own port, with `./credentials` mounted into the backend. The **backend service
+  is already defined** (Phase 1); the **frontend service is still pending**
+  (Phase 3 wires it in and connects it by compose service name).
+- The backend is published on **host port `8001`** (→ container `8000`) because
+  host `8000` is taken by another local service. Adjust the mapping in
+  `docker-compose.yml` if your machine differs.
+- A root **`Makefile`** wraps the common commands: `make build` / `make run`
+  (build + `up`) / `make down`. (It also has a `copy-skills` target unrelated to
+  the app.)
 - **No CI/CD pipeline.** Keep the setup transparent and dependency-free.
 
 ## Repository layout

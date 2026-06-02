@@ -31,20 +31,28 @@ Update this section as directories are added.
 
 ## Commands
 
-Update these commands once the project has runnable code.
+The backend (Phase 1) is runnable today. The frontend + full compose wiring land
+in Phase 3.
 
 ```bash
-# Install dependencies
-# TODO
+# Install backend dependencies (local, non-Docker)
+pip install -r backend/requirements.txt
 
-# Run the app locally
-# TODO
+# Run the backend locally (from ./backend), requires ./credentials + creds env var
+uvicorn app.main:app --port 8000
+
+# Run the stack with Docker (backend on host port 8001 -> container 8000)
+make build      # docker compose build
+make run        # docker compose up --build
+make down       # docker compose down
+make logs       # docker compose logs -f
 
 # Run tests
-# TODO
+# No automated test suite — validation is manual per each feature's validation.md
+# (sanity gates: `python -c "import app.main"`, server boot, `docker build ./backend`).
 
 # Run linting / formatting
-# TODO
+# None configured yet.
 ```
 
 ## Development Workflow
