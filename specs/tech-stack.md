@@ -15,11 +15,23 @@ frontend (Streamlit)  ──HTTP──▶  backend (FastAPI)  ──▶  LangCha
 
 ## Frontend
 
-- **Streamlit** — a single chat UI that talks to the backend over HTTP.
-- Renders the agent's final answer plus a view of its **tool calls** and
-  **structured output** / run metrics (token counts, iterations), since making
-  the agent's reasoning visible is a teaching goal.
-- Conversation state lives in Streamlit's per-session state (see Data model).
+- **Streamlit** — a single chat UI (`frontend/app.py`) that talks to the backend
+  over HTTP. Dependencies pinned in `frontend/requirements.txt`:
+  `streamlit==1.54.0`, `requests==2.32.3`. No agent libraries live here — the
+  frontend only calls the backend's `POST /chat`.
+- **As built (Phase 2):** renders the agent's **final answer** as a chat bubble
+  plus a collapsible **tool-calls view** — the ordered tool-call sequence and
+  per-tool counts, drawn from the `metrics` the API exposes. Conversation is held
+  in Streamlit's per-session state (see Data model).
+- **Not yet surfaced (teaching goals, deferred past Phase 2):**
+  - **Structured output** (`AutonomousAgentResponse` fields) — descoped from the
+    Phase 2 UI; see the mission success criteria and roadmap for where this lands.
+  - **Run metrics** (token counts, iterations) as a standalone view.
+  - **Per-call tool arguments and outputs** — the backend `/chat` response does
+    not expose them today (`build_api_metrics` returns only counts, the tool-name
+    sequence, and totals); surfacing them needs a backend change first.
+- **Backend URL** is hardcoded to `http://localhost:8001` in Phase 2; Phase 3
+  swaps that one constant for the compose service name (`http://backend:8000`).
 
 ## Backend
 
@@ -80,8 +92,11 @@ distracts from the lesson.
   the classroom.
 - `docker-compose.yml` builds and runs `./backend` and `./frontend`, each on its
   own port, with `./credentials` mounted into the backend. The **backend service
-  is already defined** (Phase 1); the **frontend service is still pending**
-  (Phase 3 wires it in and connects it by compose service name).
+  is already defined** (Phase 1). The **frontend `Dockerfile` now exists**
+  (Phase 2; Streamlit on container port `8501`), but the **frontend service is
+  not yet in compose** — Phase 3 wires it in and connects it by compose service
+  name. The frontend image build was not validated in Phase 2 (the Makefile
+  builds only compose services); that check is carried into Phase 3.
 - The backend is published on **host port `8001`** (→ container `8000`) because
   host `8000` is taken by another local service. Adjust the mapping in
   `docker-compose.yml` if your machine differs.

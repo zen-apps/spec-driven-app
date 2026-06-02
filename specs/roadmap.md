@@ -26,9 +26,10 @@ Build the chat UI that talks to the backend.
 - Validation: manual — run frontend against a running backend, send a prompt,
   confirm the answer and tool/metric views display correctly.
 
-## Phase 3 — Compose integration [ ]
+## Phase 3 — Compose integration + structured-output view [ ]
 
-Wire both services together for a one-command classroom setup.
+Wire both services together for a one-command classroom setup, and complete the
+frontend's reasoning views.
 
 - **Already in place from Phase 1:** `docker-compose.yml` with the **backend**
   service (host `8001` → container `8000`, `./credentials` mounted read-only) and
@@ -37,6 +38,13 @@ Wire both services together for a one-command classroom setup.
 - Add the **frontend** service to `docker-compose.yml`, on its own port.
 - Configure the frontend to reach the backend by its compose service name
   (`http://backend:8000`).
+- **Folded in from Phase 2 (replan 2026-06-02):** add the **structured-output
+  view** to the frontend — render the agent's `AutonomousAgentResponse` (the
+  `structured_response` the `/chat` API already returns) so the end-to-end demo
+  shows it, satisfying `mission.md` success criterion #1. Phase 2 intentionally
+  shipped final answer + tool calls only; this completes the promised reasoning
+  views. (The tool-calls view stays names/sequence/counts — exposing per-call
+  args/outputs is explicitly **not** scheduled; see `tech-stack.md` Frontend.)
 - **Carried over from Phase 2:** the `frontend/Dockerfile` exists but its image
   build was not validated in Phase 2 (the Makefile builds only compose services,
   and the frontend wasn't in compose yet). Validate the frontend image builds
