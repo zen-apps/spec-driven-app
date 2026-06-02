@@ -13,19 +13,6 @@ and written by the other SDD skills (`sdd-feature-spec`, `sdd-implement-feature`
 Completed phases have moved to [changelog.md](changelog.md) — this file tracks
 only open and upcoming work.
 
-## Phase 2 — Streamlit frontend [x] COMPLETE (implementation; manual QA pending)
-
-Build the chat UI that talks to the backend.
-
-- Streamlit app in `./frontend` with a chat interface calling the backend's
-  endpoint.
-- Render the agent's final answer plus a view of its **tool calls** and
-  **structured output / metrics**, since visible reasoning is a teaching goal.
-- Conversation held in Streamlit session state.
-- Frontend Dockerfile.
-- Validation: manual — run frontend against a running backend, send a prompt,
-  confirm the answer and tool/metric views display correctly.
-
 ## Phase 3 — Compose integration + structured-output view [ ]
 
 Wire both services together for a one-command classroom setup, and complete the

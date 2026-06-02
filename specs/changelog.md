@@ -8,6 +8,11 @@ Ordered newest phase first.
 
 ---
 
+## Phase 2 — Streamlit frontend
+**Completed:** 2026-06-02 · **Spec:** [specs/2026-06-02-streamlit-frontend/](2026-06-02-streamlit-frontend/)
+
+Shipped the Streamlit chat UI calling the backend's `/chat`, rendering the agent's final answer plus a tool-calls view (names/sequence/counts) with session-state history and a frontend Dockerfile — implementation complete, manual QA pending; structured-output view folded into Phase 3.
+
 ## Phase 1 — Backend agent core
 **Completed:** 2026-06-02 · **Spec:** [specs/2026-06-02-backend-agent-core/](2026-06-02-backend-agent-core/)
 
