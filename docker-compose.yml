@@ -1,0 +1,24 @@
+# Docker Compose for the reference agent app.
+#
+# Phase 1 defines the backend service only. Phase 3 will add the Streamlit
+# frontend service and wire it to reach the backend by its compose service name.
+#
+# The Gemini service-account JSON is never baked into the image — it is mounted
+# read-only from the gitignored ./credentials directory and located via
+# GOOGLE_APPLICATION_CREDENTIALS.
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      # Host 8001 -> container 8000 (host 8000 is used by another local service).
+      - "8001:8000"
+    volumes:
+      - ./credentials:/credentials:ro
+    environment:
+      # Path to the mounted service-account key (read by the Google SDK).
+      GOOGLE_APPLICATION_CREDENTIALS: /credentials/service-account-key.json
+      # Notebook-matching defaults; override here if your GCP setup differs.
+      GEMINI_MODEL: gemini-3.5-flash
+      GCP_PROJECT: zen-general-377713
+      GCP_LOCATION: global

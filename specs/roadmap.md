@@ -10,7 +10,7 @@ Mark a phase `[x] COMPLETE` when its validation passes. This done-marker is read
 and written by the other SDD skills (`sdd-feature-spec`, `sdd-implement-feature`,
 `sdd-changelog`).
 
-## Phase 1 — Backend agent core [ ]
+## Phase 1 — Backend agent core [x] COMPLETE
 
 Stand up the FastAPI backend that wraps the LangChain agent, testable over HTTP
 before any UI exists.

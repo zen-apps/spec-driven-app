@@ -1,0 +1,13 @@
+# Backend dependencies — Phase 1 (Backend agent core).
+#
+# Agent libraries are pinned to the same versions as examples/requirements.txt
+# so the backend behaves exactly like the reference notebook. The only
+# additions are the web-serving layer mandated by specs/tech-stack.md.
+
+# --- Agent (matches examples/requirements.txt) ---
+langchain==1.3.0
+langchain-google-genai==4.2.4
+
+# --- Web serving layer (the agreed backend framework, per tech-stack.md) ---
+fastapi==0.115.6
+uvicorn[standard]==0.34.0

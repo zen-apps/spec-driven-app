@@ -9,3 +9,17 @@ copy-skills:
 	cp -R skills/. .agents/skills/
 	if [ -d optional_skills ]; then cp -R optional_skills/. .agents/skills/; fi
 	@echo "Copied skill(s) to .agents/skills/"
+
+# --- Docker ---
+# Build the service image(s) defined in docker-compose.yml.
+build:
+	docker compose build
+
+# Build (if needed) and run the stack in the foreground; Ctrl+C to stop.
+# Requires the Gemini service-account JSON in ./credentials.
+run:
+	docker compose up --build
+
+# Stop and remove the running containers.
+down:
+	docker compose down
