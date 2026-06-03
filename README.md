@@ -35,3 +35,15 @@ Python** — by writing specs first and letting the agent implement against them
 └── docker-compose.yml
 ```
 
+## Prerequisites
+
+- **Make** installed
+- **Docker** installed
+- **(Gemini only)** Create a `credentials/` directory in the repo root and place your
+  GCP service account key inside it as `service-account-key.json`.
+
+## Models
+
+This app is built on **LangChain**, so any supported LLM can be substituted in — use
+whichever model you prefer. Gemini is the default; if you use it, complete the
+credentials step above or create an .env with your model credentials.
